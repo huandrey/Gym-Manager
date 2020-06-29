@@ -16,19 +16,16 @@ module.exports = {
         return
     },
     post: (req, res) => {
-        // Verificando se todos os campos do formulário estão preenchidos
+        //Verificando se todos os campos do formulário estão preenchidos
         const keys = Object.keys(req.body);
         
         for (key of keys) {
-            if(req.body[key] == "") res.send('please, ')
+            if(req.body[key] == "") 
+            return res.send('please, ')
         }
         Instructor.create(req.body, function(instructor) {
-            return res.redirect('/');
+            return res.redirect(`instructors/${instructor.id}`);
         })
-
-        // Instructor.create(req.body, function(instructor) {
-        //     return res.redirect(`instructors/${instructor.id}`);
-        // })
 
     },
 
