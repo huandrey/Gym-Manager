@@ -1,0 +1,26 @@
+.card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 800px;
+    min-height: 400px;
+    margin: 45px auto;
+    background: #FFF;
+    box-shadow: 0px 2px 6px -2px rgba(0, 0, 0, 0.3);
+    animation: open 800ms ease-in-out forwards;
+
+    @keyframes open {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    section.avatar {
+        background: url('https://images.unsplash.com/photo-1589579234083-e364ef7b8592?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80');
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}
