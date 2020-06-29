@@ -1,0 +1,95 @@
+<div class="item">
+    <label for="">Avatar URL</label>
+    <div>
+        <input 
+            type="text" 
+            name="avatar_url" 
+            placeholder="https://picture.com.br"
+            value="{{ member.avatar_url }}"
+        >
+    </div>
+</div>
+<div class="item">
+    <label for="">Aluno</label>
+    <div>
+        <input 
+            type="text" 
+            name="name"
+            id="name" 
+            placeholder="Nome do Aluno"
+            value="{{ member.name }}"
+        >
+    </div>
+</div>
+<div class="item">
+    <label for="">Email</label>
+    <div>
+        <input 
+            type="email" 
+            name="email"
+            value="{{ member.email }}"
+        >
+    </div>
+</div>
+<div class="item">
+    <label for="">Data de nascimento</label>
+    <div>
+        <input 
+            type="date" 
+            name="birth" 
+            value="{{ member.birth }}"
+
+        >
+    </div>
+</div>
+<div class="item">
+    <label for="">Sexo</label>
+    <div>
+        <span><input type="radio" name="gender" checked value="M">Masculino</span>
+        <span><input type="radio" name="gender" value="F">Feminino</span>
+    </div>
+</div>
+
+<div class="item">
+    <label for="">Tipo Sanguíneo</label>
+    <div>
+        <select name="blood">
+            <option value="">Selecione o tipo sanguíneo</option>
+            <option value="A1" {%if member.blood == "A1"%} selected {%endif%}>A+</option>
+            <option value="A0" {%if member.blood == "A0"%} selected {%endif%}>A-</option>
+            <option value="B1" {%if member.blood == "B1"%} selected {%endif%}>B+</option>
+            <option value="B0" {%if member.blood == "B0"%} selected {%endif%}>B-</option>
+            <option value="O1" {%if member.blood == "O1"%} selected {%endif%}>O+</option>
+            <option value="O0" {%if member.blood == "O0"%} selected {%endif%}>O-</option>
+            <option value="AB1" {%if member.blood == "AB1"%} selected {%endif%}>AB+</option>
+            <option value="AB0" {%if member.blood == "AB0"%} selected {%endif%}>AB-</option>
+        </select>
+    </div>
+</div>
+
+<div class="item">
+    <label for="">Peso (kg)</label>
+    <div>
+        <input 
+            type="number" 
+            name="weight"
+            id="name" 
+            placeholder="Nome do Aluno"
+            value="{{ member.weight }}"
+        >
+    </div>
+</div>
+
+<div class="item">
+    <label for="">Altura (cm)</label>
+    <div>
+        <input 
+            type="number" 
+            name="height"
+            placeholder="Nome do Aluno"
+            value="{{ member.height }}"
+        >
+    </div>
+</div>
+
+<button type="submit">Salvar</button>
