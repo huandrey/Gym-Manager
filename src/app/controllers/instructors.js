@@ -1,4 +1,5 @@
 const Instructor = require('../models/Instructor');
+const { age, date } = require('../../lib/utils'); 
 
 module.exports = {
     index: (req, res) => {
@@ -8,12 +9,6 @@ module.exports = {
         Instructor.all(function(instructors) {
             return res.render('instructors/index', { instructors })
         })
-    },
-    create: (req, res) => {
-        return
-    },
-    show: (req, res) => {
-        return
     },
     post: (req, res) => {
         //Verificando se todos os campos do formulário estão preenchidos
@@ -28,9 +23,27 @@ module.exports = {
         })
 
     },
+    show: (req, res) => {
+        Instructor.find(req.params.id, function(instructor) {
+            if (!instructor) return res.send('instructor not found');
 
+            instructor.birth = age(instructor.birth);
+            instructor.services = instructor.services.split(',');
+            console.log(instructor.birth)
+            //console.log(instructor.services)
+            instructor.created_at = date(instructor.created_at).format;
+            console.log(instructor.created_at)
+            return res.render('instructors/show', { instructor });
+        })
+    },
     edit: (req, res) => {
-        return
+        Instructor.find(req.params.id, function(instructor) {
+            if (!instructor) return res.send('instructor not found');
+
+            instructor.birth = date(instructor.birth).iso;
+            
+            return res.render('instructors/edit', { instructor });
+    })
     },
 
     put: (req, res) => {
@@ -39,10 +52,15 @@ module.exports = {
         for (key of keys) {
             if(req.body[key] === "") res.send('please, ')
         }
-        return
+        
+        Instructor.update(req.body, function() {
+            return res.redirect(`instructors/${req.body.id}`);
+        })
+
     },
 
     delete: (req, res) =>{
      return   
     }
 }
+
