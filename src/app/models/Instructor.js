@@ -4,7 +4,7 @@ const { age, date } = require('../../lib/utils');
 module.exports = {
     all(callback) {
         db.query(`SELECT * FROM instructors`, function(err, results) {
-            if (err) return console.log(err);
+            if (err) throw `database error ${err}`;
     
             callback(results.rows);
         })
@@ -33,11 +33,47 @@ module.exports = {
         ]
 
         db.query(query, values, function(err, results) {
-            if(err) return console.log('database error!');
-            
+            if(err) throw `database error ${err}`
+                
+            callback(results.rows[0]);
+
+            // console.log(err)
+            // console.log(results);
+        })
+    },
+    find(id, callback) {
+        db.query(`SELECT * FROM instructors WHERE id = $1`, [id], function(err, results) {
+            if(err) throw `database error ${err}`
+
             callback(results.rows[0]);
         })
-    
-    }
+    },
+    update(data, callback) {
+        const query = `
+        UPDATE instructors SET
+            avatar_url=($1),
+            name=($2),
+            birth=($3),
+            gender=($4),
+            services=($5)
+        WHERE id = $6
+        `
 
+        const values = [
+            data.avatar_url,
+            data.name,
+            date(data.birth).iso,
+            data.gender,
+            data.services,
+            data.id
+        ]
+
+        db.query(query, values, function(err, results) {
+            if(err) throw `database error ${err}`
+
+            callback();
+        })
+    },
+    delelte() {
+    }
 }
