@@ -15,26 +15,35 @@ $secundary-color: #F7DF1E;
 
     .item {
         display: block;
-        padding: 16px 0;
+        padding: 16px 0 8px 0;
         border-bottom: 1px solid rgba(0, 0, 0, .1);
     
         &:nth-child(6) {
             border: none;
         }
 
-        label {
+        :nth-child(1) {
             font-size: 14px;
             line-height: 24px;
             color: #777;
-            letter-spacing: 0.7px;
+            letter-spacing: .7px;
             font-weight: normal;
         }
 
-        input {
+        
+        :nth-child(2) {
+            font-size: 18px;
+            font-weight: bold;
+            color:#555;
+            margin-top: 4px;
+        }
+
+        input[type="text"], input[type="date"] {
             width: 100%;
             font-size: 18px;
             font-weight: bold;
             color: #555;
+            margin-top: 4px;
             outline: none;
 
             ::placeholder {
@@ -42,27 +51,32 @@ $secundary-color: #F7DF1E;
                 font-weight: bold;
             }
         }
-        
-        input[type=radio] {
-            width: initial;
+        //TODO CORRIGIR SPAN
+        &:nth-child(5) span {
             position: relative;
-            top: 3px;
-            margin-right: 5px;
-        }
-
-        span {
-            display: inline-block;
-            color: rgb(154, 145, 145);
+            top: 2px;
+            color: #FFF;
             font-size: 12px;
             font-weight: bold;
             text-transform: uppercase;
-            margin-top: 8px;
+            margin-top: 10px;
             margin-right: 4px;
             padding: 8px 16px;
             border-radius: 16px;
-            background: $secundary-color;
-
+            background: #7159c1;
         }
+
+        &:nth-child(5) div {
+            margin-bottom: 10px;
+        }
+
+        input[type=radio] {
+            width: initial;
+            position: relative;
+            top: 2.5px;
+            margin-right: 5px;
+        }
+
     }
 
     button[type="submit"] {
