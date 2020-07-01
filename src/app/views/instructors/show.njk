@@ -1,34 +1,38 @@
 {% extends "layout.njk" %}  
 
-{% block content %} 
+{% block content %}
 <div class="card">
     <section class="avatar"></section>
     <section class="details">
         <h3>Detalhes</h3>
         <div class="item">
             <div>Instrutor</div>
-            <div>{{}}</div>
+            <div class="campos">{{ instructor.name }}</div>
         </div>
         <div class="item">
             <div>Idade</div>
-            <div>{{}}</div>
+            <div>{{ instructor.birth }}</div>
         </div>
         <div class="item">
             <div>Sexo</div>
-            <div>{{}}</div>
+            <div>{{ 'Masculino' if instructor.gender == 'M' else 'Feminino'}}</div>
         </div>
         <div class="item">
             <div>Acompanhamento</div>
             <div>
-            {% for service in Instructor.services%}
+                {% for service in instructor.services %}
+                <span>{{ service }}</span>
+                {% endfor %}
             </div>
         </div>
         <div class="item">
             <div>Desde</div>
-            <div>{{}}</div>
+            <div>{{ instructor.created_at }}</div>
         </div>
 
-        <a href="/instructor/{{}}" class="button">Editar</a>
+        <button type="submit" href="/instructors/{{ instructor.id }}/edit">Editar</button>
     </section>
 </div>
-{% endblock content %}  
+
+{% endblock content %}
+
