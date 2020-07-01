@@ -108,7 +108,7 @@ body header :nth-child(1) {
 
 .details .item {
   display: block;
-  padding: 16px 0;
+  padding: 16px 0 8px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -116,60 +116,73 @@ body header :nth-child(1) {
   border: none;
 }
 
-.details .item label {
+.details .item :nth-child(1) {
   font-size: 14px;
   line-height: 24px;
   color: #777;
-  letter-spacing: 0.7px;
+  letter-spacing: .7px;
   font-weight: normal;
 }
 
-.details .item input {
+.details .item :nth-child(2) {
+  font-size: 18px;
+  font-weight: bold;
+  color: #555;
+  margin-top: 4px;
+}
+
+.details .item input[type="text"], .details .item input[type="date"] {
   width: 100%;
   font-size: 18px;
   font-weight: bold;
   color: #555;
+  margin-top: 4px;
   outline: none;
 }
 
-.details .item input ::-webkit-input-placeholder {
+.details .item input[type="text"] ::-webkit-input-placeholder, .details .item input[type="date"] ::-webkit-input-placeholder {
   font-size: 16px;
   font-weight: bold;
 }
 
-.details .item input :-ms-input-placeholder {
+.details .item input[type="text"] :-ms-input-placeholder, .details .item input[type="date"] :-ms-input-placeholder {
   font-size: 16px;
   font-weight: bold;
 }
 
-.details .item input ::-ms-input-placeholder {
+.details .item input[type="text"] ::-ms-input-placeholder, .details .item input[type="date"] ::-ms-input-placeholder {
   font-size: 16px;
   font-weight: bold;
 }
 
-.details .item input ::placeholder {
+.details .item input[type="text"] ::placeholder, .details .item input[type="date"] ::placeholder {
   font-size: 16px;
   font-weight: bold;
+}
+
+.details .item:nth-child(5) span {
+  position: relative;
+  top: 2px;
+  color: #FFF;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 10px;
+  margin-right: 4px;
+  padding: 8px 16px;
+  border-radius: 16px;
+  background: #7159c1;
+}
+
+.details .item:nth-child(5) div {
+  margin-bottom: 10px;
 }
 
 .details .item input[type=radio] {
   width: initial;
   position: relative;
-  top: 3px;
+  top: 2.5px;
   margin-right: 5px;
-}
-
-.details .item span {
-  display: inline-block;
-  color: #9a9191;
-  font-size: 12px;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-top: 8px;
-  margin-right: 4px;
-  padding: 8px 16px;
-  border-radius: 16px;
-  background: #F7DF1E;
 }
 
 .details button[type="submit"] {
